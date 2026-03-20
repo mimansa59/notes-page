@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App - Search & Organize</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">Notes App</h1>
+                <p class="app-subtitle">Organize your thoughts, search your memories</p>
+            </div>
+        </header>
+
+        <!-- Main Container -->
+        <div class="main-wrapper">
+            <!-- Left Sidebar - Notes List -->
+            <aside class="notes-list-panel">
+                <!-- Search and Create Section -->
+                <div class="list-header">
+                    <div class="search-wrapper">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder=" Search notes..."
+                        >
+                        <button id="clear-search" class="btn-clear" title="Clear search">✕</button>
+                    </div>
+                    <button id="create-btn" class="btn btn-primary btn-block">
+                         New Note
+                    </button>
+                </div>
+
+                <!-- Notes List -->
+                <div class="notes-list-container">
+                    <div id="notes-list" class="notes-list">
+                        <div class="empty-state-list">
+                            <p>📭 No notes yet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Count -->
+                <div class="list-footer">
+                    <span id="notes-count">0 notes</span>
+                </div>
+            </aside>
+
+            <!-- Right Main Panel - Note Viewer -->
+            <main class="note-viewer-panel">
+                <div id="note-viewer" class="note-viewer">
+                    <div class="note-empty-state">
+                        <p>📖 Your note will open here</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Create/Edit Modal -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Create New Note</h2>
+                    <button class="modal-close" id="modal-close">&times;</button>
+                </div>
+                
+                <!-- Create Note Form -->
+                <form id="create-note-form" class="note-form">
+                    <div class="form-group">
+                        <label for="note-title">Title</label>
+                        <input 
+                            type="text" 
+                            id="note-title" 
+                            placeholder="Enter note title..."
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="note-content">Content</label>
+                        <textarea 
+                            id="note-content" 
+                            placeholder="Write your note here..."
+                            rows="10"
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn btn-primary">
+                            ✓ Create Note
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="modal-cancel">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Edit Note Form -->
+                <form id="edit-note-form" class="note-form" style="display: none;">
+                    <input type="hidden" id="edit-note-id">
+                    <div class="form-group">
+                        <label for="edit-note-title">Title</label>
+                        <input 
+                            type="text" 
+                            id="edit-note-title" 
+                            placeholder="Enter note title..."
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-note-content">Content</label>
+                        <textarea 
+                            id="edit-note-content" 
+                            placeholder="Write your note here..."
+                            rows="10"
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn btn-primary">
+                            ✓ Save Changes
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="modal-cancel">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
