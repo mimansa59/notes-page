@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 # Database configuration
-DATABASE = 'notes.db'
+DATABASE = '/data/notes.db'
 
 def get_db_connection():
     """Create database connection"""
